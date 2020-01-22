@@ -11,10 +11,11 @@ public class ExchangeRate {
 	public ExchangeRate() {
 	}
 
-	public ExchangeRate(Date date, String baseCurrency, String targetCurrency) {
+	public ExchangeRate(Date date, String baseCurrency, String targetCurrency, float rate) {
 		this.date = date;
 		this.baseCurrency = baseCurrency;
 		this.targetCurrency = targetCurrency;
+		this.rate = rate;
 	}
 
 	public Date getDate() {
