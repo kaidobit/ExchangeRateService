@@ -19,16 +19,18 @@ public class ExchangeRateApiController {
 	private final String DATE_FORMAT = "dd/MM/yyyy";
 	@Autowired
 	private ExchangeRateController erc;
-	
+
 	@PostMapping("/{date}/{baseCurrency}/{targetCurrency}")
 	@ResponseBody
 	public ExchangeRateResponse getTodaysExchangeRate(@PathVariable("date") String date,
 			@PathVariable("baseCurrency") String baseCurrency, @PathVariable("targetCurrency") String targetCurrency) {
 		ExchangeRateResponse response = new ExchangeRateResponse();
-		
+
 		response.setDate(date);
 		try {
-			response.setExchangeRateToday(erc.getTodaysExchangeRate(new SimpleDateFormat(DATE_FORMAT).parse(date), baseCurrency, targetCurrency).getExchangeRate());
+			response.setExchangeRateToday(erc
+					.getTodaysExchangeRate(new SimpleDateFormat(DATE_FORMAT).parse(date), baseCurrency, targetCurrency)
+					.getRate());
 		} catch (ParseException e) {
 			// TODO set http error
 			e.printStackTrace();

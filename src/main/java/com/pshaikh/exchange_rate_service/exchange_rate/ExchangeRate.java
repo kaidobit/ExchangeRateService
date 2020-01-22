@@ -6,7 +6,7 @@ public class ExchangeRate {
 	private Date date;
 	private String baseCurrency;
 	private String targetCurrency;
-	private float exchangeRate;
+	private float rate;
 
 	public ExchangeRate() {
 	}
@@ -41,11 +41,11 @@ public class ExchangeRate {
 		this.targetCurrency = targetCurrency;
 	}
 
-	public float getExchangeRate() {
-		return exchangeRate;
+	public float getRate() {
+		return rate;
 	}
 
-	public void setExchangeRate(float exchangeRate) {
-		this.exchangeRate = exchangeRate;
+	public void setRate(float rate) {
+		this.rate = rate;
 	}
 }
