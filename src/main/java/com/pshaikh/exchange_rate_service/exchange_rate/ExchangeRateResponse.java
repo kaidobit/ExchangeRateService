@@ -4,7 +4,7 @@ public class ExchangeRateResponse {
 	private String date;
 	private float exchangeRateToday;
 	private float exchangeRateAverageLastFiveDays;
-	private float trend;
+	private Object trend;
 
 	public ExchangeRateResponse() {
 	}
@@ -40,11 +40,11 @@ public class ExchangeRateResponse {
 		this.exchangeRateAverageLastFiveDays = exchangeRateAverageLastFiveDays;
 	}
 
-	public float getTrend() {
+	public Object getTrend() {
 		return trend;
 	}
 
-	public void setTrend(float trend) {
+	public void setTrend(Object trend) {
 		this.trend = trend;
 	}
 }
