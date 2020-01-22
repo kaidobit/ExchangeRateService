@@ -1,34 +1,23 @@
 package com.pshaikh.exchange_rate_service.exchange_rate;
 
 public class ExchangeRateResponse {
-	private String date;
-	private float exchangeRateToday;
+	private ExchangeRate exchangeRateToday;
 	private float exchangeRateAverageLastFiveDays;
 	private Object trend;
 
 	public ExchangeRateResponse() {
 	}
 
-	public ExchangeRateResponse(String date, float exchangeRateToday, float exchangeRateAverageLastFiveDays,
-			float trend) {
-		this.date = date;
+	public ExchangeRateResponse(ExchangeRate exchangeRateToday, float exchangeRateAverageLastFiveDays, float trend) {
 		this.exchangeRateToday = exchangeRateToday;
 		this.exchangeRateAverageLastFiveDays = exchangeRateAverageLastFiveDays;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public float getExchangeRateToday() {
+	public ExchangeRate getExchangeRateToday() {
 		return exchangeRateToday;
 	}
 
-	public void setExchangeRateToday(float exchangeRateToday) {
+	public void setExchangeRateToday(ExchangeRate exchangeRateToday) {
 		this.exchangeRateToday = exchangeRateToday;
 	}
 

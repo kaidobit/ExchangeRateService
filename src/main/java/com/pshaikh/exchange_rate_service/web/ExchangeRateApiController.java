@@ -26,11 +26,9 @@ public class ExchangeRateApiController {
 			@PathVariable("baseCurrency") String baseCurrency, @PathVariable("targetCurrency") String targetCurrency) {
 		ExchangeRateResponse response = new ExchangeRateResponse();
 
-		response.setDate(date);
 		try {
-			response.setExchangeRateToday(erc
-					.getTodaysExchangeRate(new SimpleDateFormat(DATE_FORMAT).parse(date), baseCurrency, targetCurrency)
-					.getRate());
+			response.setExchangeRateToday(erc.getTodaysExchangeRate(new SimpleDateFormat(DATE_FORMAT).parse(date),
+					baseCurrency, targetCurrency));
 		} catch (ParseException e) {
 			// TODO set http error
 			e.printStackTrace();

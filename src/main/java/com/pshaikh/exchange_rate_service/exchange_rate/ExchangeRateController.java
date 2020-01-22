@@ -2,14 +2,20 @@ package com.pshaikh.exchange_rate_service.exchange_rate;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class ExchangeRateController {
-
-	public ExchangeRate getTodaysExchangeRate(Date parse, String baseCurrency, String targetCurrency) {
-		// TODO Auto-generated method stub
-		return null;
+	@Autowired
+	ExchangeRateService exchangeRateService;
+	
+	public ExchangeRate getTodaysExchangeRate(Date date, String baseCurrency, String targetCurrency) {
+		ExchangeRate exchangeRate = new ExchangeRate(date, baseCurrency, targetCurrency);
+		
+		exchangeRate.setRate(exchangeRateService.requestTodaysExchangeRate());
+		
+		return exchangeRate;
 	}
 
 	public float getAverageExchangeRateOfLastDays(int days) {
