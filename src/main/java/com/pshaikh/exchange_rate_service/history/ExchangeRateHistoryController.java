@@ -11,8 +11,11 @@ public class ExchangeRateHistoryController {
 	ExchangeRateHistoryRepository erhRepo;
 
 	public boolean persist(ExchangeRate exchangeRate) {
-
-		return true;
+		if (erhRepo.save(new ExchangeRateHistory(exchangeRate.getDate(), exchangeRate.getRate(),
+				exchangeRate.getBaseCurrency(), exchangeRate.getTargetCurrency())) != null) {
+			return true;
+		}
+		return false;
 	}
 
 }
