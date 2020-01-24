@@ -17,9 +17,9 @@ public class ExchangeRateHistory {
 	private Date date;
 	@Column(name = "EXCHANGE_RATE")
 	private float exchangeRate;
-	@Column(name = "BASE_CURRENCY")
+	@Column(name = "BASE_CURRENCY", length = 5)
 	private String baseCurrency;
-	@Column(name = "TARGET_CURRENCY")
+	@Column(name = "TARGET_CURRENCY", length = 5)
 	private String targetCurrency;
 
 	public ExchangeRateHistory() {
