@@ -14,7 +14,7 @@ public class ExchangeRateHistoryController {
 		if(erhRepo.save(new ExchangeRateHistory(exchangeRate.getDate(), exchangeRate.getRate(), exchangeRate.getBaseCurrency(), exchangeRate.getTargetCurrency())) != null) {
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
