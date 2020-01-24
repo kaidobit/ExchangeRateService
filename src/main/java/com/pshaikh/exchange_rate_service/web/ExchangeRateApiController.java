@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateController;
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse;
+import com.pshaikh.exchange_rate_service.history.ExchangeRateHistoryController;
 
 @RestController
 @RequestMapping("/api/exchange-rate")
@@ -19,6 +20,8 @@ public class ExchangeRateApiController {
 	private final String DATE_FORMAT = "dd/MM/yyyy";
 	@Autowired
 	private ExchangeRateController erc;
+	@Autowired
+	private ExchangeRateHistoryController erhc;
 
 	@PostMapping("/{date}/{baseCurrency}/{targetCurrency}")
 	@ResponseBody
@@ -33,7 +36,7 @@ public class ExchangeRateApiController {
 			// TODO set http error
 			e.printStackTrace();
 		}
-		response.setExchangeRateAverageLastFiveDays(erc.getAverageExchangeRateOfLastDays(5));
+		response.setExchangeRateAverageLastDays(erhc.getAverageExchangeRateOfLastDays(5, baseCurrency, targetCurrency));
 		response.setTrend(erc.getTrend());
 
 		return response;

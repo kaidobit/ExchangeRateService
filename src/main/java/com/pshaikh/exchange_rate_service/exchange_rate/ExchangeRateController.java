@@ -23,11 +23,6 @@ public class ExchangeRateController {
 		return exchangeRate;
 	}
 
-	public float getAverageExchangeRateOfLastDays(int days) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	public Object getTrend() {
 		// TODO Auto-generated method stub
 		return 0;
