@@ -8,8 +8,8 @@ public class ExchangeRateResponse {
 	public ExchangeRateResponse() {
 	}
 
-	public ExchangeRateResponse(ExchangeRate exchangeRateToday, float exchangeRateAverageLastFiveDays, float trend) {
-		this.exchangeRate = exchangeRateToday;
+	public ExchangeRateResponse(ExchangeRate exchangeRate, float exchangeRateAverageLastFiveDays, float trend) {
+		this.exchangeRate = exchangeRate;
 		this.exchangeRateAverageLastDays = exchangeRateAverageLastFiveDays;
 	}
 
@@ -17,8 +17,8 @@ public class ExchangeRateResponse {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(ExchangeRate exchangeRateToday) {
-		this.exchangeRate = exchangeRateToday;
+	public void setExchangeRate(ExchangeRate exchangeRate) {
+		this.exchangeRate = exchangeRate;
 	}
 
 	public float getExchangeRateAverageLastDays() {
