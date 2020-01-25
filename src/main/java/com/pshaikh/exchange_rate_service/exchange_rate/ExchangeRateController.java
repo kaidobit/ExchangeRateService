@@ -15,8 +15,8 @@ public class ExchangeRateController {
 	@Autowired
 	ExchangeRateHistoryController exchangeRateHistoryController;
 
-	public ExchangeRate getTodaysExchangeRate(Date date, String baseCurrency, String targetCurrency) {
-		List<ExchangeRate> todaysExchangeRates = exchangeRateService.requestTodaysExchangeRates(date, baseCurrency);
+	public ExchangeRate getExchangeRateForDateAndCurrency(Date date, String baseCurrency, String targetCurrency) {
+		List<ExchangeRate> todaysExchangeRates = exchangeRateService.requestExchangeRatesForDateAndCurrency(date, baseCurrency);
 		ExchangeRate result = null;
 		for(ExchangeRate er : todaysExchangeRates) {
 			if (er.getTargetCurrency().equals(targetCurrency)) {

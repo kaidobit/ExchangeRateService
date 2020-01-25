@@ -30,7 +30,7 @@ public class ExchangeRateApiController {
 		ExchangeRateResponse response = new ExchangeRateResponse();
 
 		try {
-			response.setExchangeRateToday(erc.getTodaysExchangeRate(new SimpleDateFormat(DATE_FORMAT).parse(date),
+			response.setExchangeRateToday(erc.getExchangeRateForDateAndCurrency(new SimpleDateFormat(DATE_FORMAT).parse(date),
 					baseCurrency, targetCurrency));
 		} catch (ParseException e) {
 			// TODO set http error

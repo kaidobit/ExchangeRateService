@@ -15,7 +15,7 @@ public class ExchangeRateService {
 	@Qualifier("exchangeRatesApiDotIo")
 	private ExchangeRateApi erApi;
 	
-	public List<ExchangeRate> requestTodaysExchangeRates(Date date, String baseCurrency) {
+	public List<ExchangeRate> requestExchangeRatesForDateAndCurrency(Date date, String baseCurrency) {
 		return erApi.getByDateWithBaseCurrency(date, baseCurrency);
 	}
 
