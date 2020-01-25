@@ -2,7 +2,7 @@ package com.pshaikh.exchange_rate_service.exchange_rate;
 
 public class ExchangeRateResponse {
 	private ExchangeRate exchangeRateToday;
-	private float exchangeRateAverageLastFiveDays;
+	private float exchangeRateAverageLastDays;
 	private Object trend;
 
 	public ExchangeRateResponse() {
@@ -10,7 +10,7 @@ public class ExchangeRateResponse {
 
 	public ExchangeRateResponse(ExchangeRate exchangeRateToday, float exchangeRateAverageLastFiveDays, float trend) {
 		this.exchangeRateToday = exchangeRateToday;
-		this.exchangeRateAverageLastFiveDays = exchangeRateAverageLastFiveDays;
+		this.exchangeRateAverageLastDays = exchangeRateAverageLastFiveDays;
 	}
 
 	public ExchangeRate getExchangeRateToday() {
@@ -21,12 +21,12 @@ public class ExchangeRateResponse {
 		this.exchangeRateToday = exchangeRateToday;
 	}
 
-	public float getExchangeRateAverageLastFiveDays() {
-		return exchangeRateAverageLastFiveDays;
+	public float getExchangeRateAverageLastDays() {
+		return exchangeRateAverageLastDays;
 	}
 
-	public void setExchangeRateAverageLastFiveDays(float exchangeRateAverageLastFiveDays) {
-		this.exchangeRateAverageLastFiveDays = exchangeRateAverageLastFiveDays;
+	public void setExchangeRateAverageLastDays(float exchangeRateAverageLastDays) {
+		this.exchangeRateAverageLastDays = exchangeRateAverageLastDays;
 	}
 
 	public Object getTrend() {
