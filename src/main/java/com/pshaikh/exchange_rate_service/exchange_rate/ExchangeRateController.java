@@ -1,6 +1,7 @@
 package com.pshaikh.exchange_rate_service.exchange_rate;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +16,19 @@ public class ExchangeRateController {
 	ExchangeRateHistoryController exchangeRateHistoryController;
 
 	public ExchangeRate getTodaysExchangeRate(Date date, String baseCurrency, String targetCurrency) {
-		ExchangeRate exchangeRate = new ExchangeRate(date, baseCurrency, targetCurrency,
-				exchangeRateService.requestTodaysExchangeRate());
+		List<ExchangeRate> todaysExchangeRates = exchangeRateService.requestTodaysExchangeRates(date, baseCurrency);
+		ExchangeRate result = null;
+		for(ExchangeRate er : todaysExchangeRates) {
+			if (er.getTargetCurrency().equals(targetCurrency)) {
+				result = er;
+			}
+		}
+		
+		//TODO save exchangerates to db
 
-		exchangeRateHistoryController.persist(exchangeRate);
-
-		return exchangeRate;
+		return result;
 	}
+	
 
 	public Object getTrend() {
 		// TODO Auto-generated method stub
