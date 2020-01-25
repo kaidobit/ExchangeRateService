@@ -1,5 +1,6 @@
 package com.pshaikh.exchange_rate_service.history;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -13,13 +14,21 @@ import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
 public class ExchangeRateHistoryController {
 	@Autowired
 	ExchangeRateHistoryRepository erhRepo;
-
-	public boolean persist(ExchangeRate exchangeRate) {
-		if (erhRepo.save(new ExchangeRateHistory(exchangeRate.getDate(), exchangeRate.getRate(),
-				exchangeRate.getBaseCurrency(), exchangeRate.getTargetCurrency())) != null) {
-			return true;
+	
+	public boolean persist(List<ExchangeRate> todaysExchangeRates) {
+		boolean persisted = false;
+		List<ExchangeRateHistory> exchangeRateHistories = new ArrayList<>();
+		
+		for(ExchangeRate er : todaysExchangeRates) {
+			exchangeRateHistories.add(new ExchangeRateHistory(er.getDate(), er.getRate(), er.getBaseCurrency(), er.getTargetCurrency()));
 		}
-		return false;
+		
+		if(erhRepo.saveAll(exchangeRateHistories) != null) {
+			persisted = true;
+		}
+		
+		return persisted;
+		
 	}
 
 	public float getAverageExchangeRateOfLastDays(int days, String baseCurrency, String targetCurrency) {
@@ -31,5 +40,7 @@ public class ExchangeRateHistoryController {
 		
 		return erhRepo.calculateAverageRatesByDatesBetweenAndCurrencies(fromDate, today, baseCurrency, targetCurrency);
 	}
+
+
 
 }

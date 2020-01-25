@@ -18,13 +18,16 @@ public class ExchangeRateController {
 	public ExchangeRate getExchangeRateForDateAndCurrency(Date date, String baseCurrency, String targetCurrency) {
 		List<ExchangeRate> todaysExchangeRates = exchangeRateService.requestExchangeRatesForDateAndCurrency(date, baseCurrency);
 		ExchangeRate result = null;
+
+		if(todaysExchangeRates.size() > 0) {
+			exchangeRateHistoryController.persist(todaysExchangeRates);
+		}		
+		
 		for(ExchangeRate er : todaysExchangeRates) {
 			if (er.getTargetCurrency().equals(targetCurrency)) {
 				result = er;
 			}
 		}
-		
-		//TODO save exchangerates to db
 
 		return result;
 	}
