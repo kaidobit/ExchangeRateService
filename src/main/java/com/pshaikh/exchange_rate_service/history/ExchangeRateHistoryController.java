@@ -11,6 +11,11 @@ import org.springframework.stereotype.Controller;
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse.Trend;
 
+/**
+ * Entrypoint for internal communication with ExchangeRateHistory.
+ * 
+ * @author PSHAIKH
+ */
 @Controller
 public class ExchangeRateHistoryController {
 	@Autowired
@@ -18,6 +23,12 @@ public class ExchangeRateHistoryController {
 	@Autowired
 	ExchangeRateHistoryService erhService;
 	
+	/**
+	 * Persists a list of exchangeRates as exchangeRateHistories into the database.
+	 *  
+	 * @param todaysExchangeRates
+	 * @return true, if persisted
+	 */
 	public boolean persist(List<ExchangeRate> todaysExchangeRates) {
 		boolean persisted = false;
 		List<ExchangeRateHistory> exchangeRateHistories = new ArrayList<>();
@@ -34,6 +45,14 @@ public class ExchangeRateHistoryController {
 		
 	}
 
+	/**
+	 * Calculates the average of exchange rate by base- and target currency between a date and the date minus a given amount of days.
+	 * @param date
+	 * @param days
+	 * @param baseCurrency
+	 * @param targetCurrency
+	 * @return the average exchange rate
+	 */
 	public float getAverageExchangeRateOfLastDays(Date date, int days, String baseCurrency, String targetCurrency) {		
 		return erhRepo.calculateAverageRatesByDatesBetweenAndCurrencies(calculateFromDate(date, days), date, baseCurrency, targetCurrency);
 	}
@@ -44,6 +63,12 @@ public class ExchangeRateHistoryController {
 		return erhService.determineTrend(exchangeRateHistories);
 	}
 	
+	/**
+	 * Calculates a date by a given date minus a given amount of days.
+	 * @param date
+	 * @param days
+	 * @return the calculated date
+	 */
 	private Date calculateFromDate(Date date, int days) {
 		Date today = date;
 		Calendar cal = Calendar.getInstance();

@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * POJO representing a database entry of table: exchange_rate_history.
+ * 
+ * @author PSHAIKH
+ */
 @Entity
 public class ExchangeRateHistory {
 	@Id
