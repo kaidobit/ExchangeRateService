@@ -1,4 +1,4 @@
-package com.pshaikh.exchange_rate_service.web;
+package external_api;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
-
-import external_api.ExchangeRateApi;
 
 @Component
 public class ExchangeRatesApiDotIo implements ExchangeRateApi {

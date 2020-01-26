@@ -1,4 +1,6 @@
-package com.pshaikh.exchange_rate_service.exchange_rate;
+package com.pshaikh.exchange_rate_service.web;
+
+import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
 
 public class ExchangeRateResponse {
 	public enum Trend {

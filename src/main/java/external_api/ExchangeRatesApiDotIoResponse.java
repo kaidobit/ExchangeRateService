@@ -1,4 +1,4 @@
-package com.pshaikh.exchange_rate_service.web;
+package external_api;
 
 import java.util.LinkedHashMap;
 

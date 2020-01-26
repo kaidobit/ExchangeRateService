@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateController;
-import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse;
 import com.pshaikh.exchange_rate_service.history.ExchangeRateHistoryController;
 
+/**
+ * Web API controller which provides rest endpoints to request data about exchange rates.
+ * 
+ * @author PSHAIKH
+ */
 @RestController
 @RequestMapping("/api/exchange-rate")
 public class ExchangeRateApiController {
@@ -24,6 +28,16 @@ public class ExchangeRateApiController {
 	@Autowired
 	private ExchangeRateHistoryController erhc;
 
+	/**
+	 * REST - Endpoint providing:
+	 *   - the exchange rate for the given date, base- and target currency
+	 *   - the average exchange rate for the given date, 5 days into the past, base- and target currency
+	 *   - a trend evaluating the exchange rate for the given date, 5 days into the past, base- and target currency
+	 * @param date
+	 * @param baseCurrency
+	 * @param targetCurrency
+	 * @return JSON format containing the response
+	 */
 	@PostMapping("/{date}/{baseCurrency}/{targetCurrency}")
 	@ResponseBody
 	public ExchangeRateResponse getTodaysExchangeRate(@PathVariable("date") String date,

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
-import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse.Trend;
+import com.pshaikh.exchange_rate_service.web.ExchangeRateResponse.Trend;
 
 /**
  * Entrypoint for internal communication with ExchangeRateHistory.

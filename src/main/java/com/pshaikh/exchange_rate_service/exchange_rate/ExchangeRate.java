@@ -3,6 +3,11 @@ package com.pshaikh.exchange_rate_service.exchange_rate;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * POJO representing a exchangeRate for internal use.
+ * 
+ * @author PSHAIKH
+ */
 public class ExchangeRate {	
 	public final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 	

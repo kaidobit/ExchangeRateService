@@ -8,6 +8,11 @@ import org.springframework.stereotype.Controller;
 
 import com.pshaikh.exchange_rate_service.history.ExchangeRateHistoryController;
 
+/**
+ * Entrypoint for communication with ExchangeRate.
+ * 
+ * @author PSHAIKH
+ */
 @Controller
 public class ExchangeRateController {
 	@Autowired
@@ -15,6 +20,13 @@ public class ExchangeRateController {
 	@Autowired
 	ExchangeRateHistoryController exchangeRateHistoryController;
 
+	/**
+	 * Return the exchangeRate for given date, base- and target currency. 
+	 * @param date
+	 * @param baseCurrency
+	 * @param targetCurrency
+	 * @return the requested exchangeRate
+	 */
 	public ExchangeRate getExchangeRateForDateAndCurrency(Date date, String baseCurrency, String targetCurrency) {
 		List<ExchangeRate> todaysExchangeRates = exchangeRateService.requestExchangeRatesForDateAndCurrency(date, baseCurrency);
 		ExchangeRate result = null;

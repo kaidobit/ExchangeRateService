@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse.Trend;
+import com.pshaikh.exchange_rate_service.web.ExchangeRateResponse.Trend;
 
 /**
  * Businesslogic for Exchange Rate History.
