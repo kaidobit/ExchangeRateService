@@ -40,7 +40,7 @@ public class ExchangeRateApiController {
 		response.setExchangeRate(erc.getExchangeRateForDateAndCurrency(dateParsed,
 					"CAD", targetCurrency));
 		response.setExchangeRateAverageLastDays(erhc.getAverageExchangeRateOfLastDays(dateParsed, 5, baseCurrency, targetCurrency));
-		response.setTrend(erc.getTrend());
+		response.setTrend(erhc.getTrend(dateParsed, 5, baseCurrency, targetCurrency));
 
 		return response;
 	}

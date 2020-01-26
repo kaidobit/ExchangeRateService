@@ -3,7 +3,7 @@ package com.pshaikh.exchange_rate_service.exchange_rate;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ExchangeRate {
+public class ExchangeRate {	
 	public final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 	
 	private Date date;

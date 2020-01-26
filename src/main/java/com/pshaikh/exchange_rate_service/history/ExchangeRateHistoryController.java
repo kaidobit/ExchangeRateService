@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRate;
+import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse.Trend;
 
 @Controller
 public class ExchangeRateHistoryController {
@@ -39,6 +40,11 @@ public class ExchangeRateHistoryController {
 		Date fromDate = cal.getTime();
 		
 		return erhRepo.calculateAverageRatesByDatesBetweenAndCurrencies(fromDate, today, baseCurrency, targetCurrency);
+	}
+
+	public Trend getTrend(Date dateParsed, int i, String baseCurrency, String targetCurrency) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

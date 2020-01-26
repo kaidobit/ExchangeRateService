@@ -31,11 +31,4 @@ public class ExchangeRateController {
 
 		return result;
 	}
-	
-
-	public Object getTrend() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

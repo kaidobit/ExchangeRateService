@@ -1,9 +1,16 @@
 package com.pshaikh.exchange_rate_service.exchange_rate;
 
 public class ExchangeRateResponse {
+	public enum Trend {
+		DESCENDING,
+		ASCENDING,
+		CONSTANT,
+		UNDEFINED;
+	}
+	
 	private ExchangeRate exchangeRate;
 	private float exchangeRateAverageLastDays;
-	private Object trend;
+	private Trend trend;
 
 	public ExchangeRateResponse() {
 	}
@@ -29,11 +36,11 @@ public class ExchangeRateResponse {
 		this.exchangeRateAverageLastDays = exchangeRateAverageLastDays;
 	}
 
-	public Object getTrend() {
+	public Trend getTrend() {
 		return trend;
 	}
 
-	public void setTrend(Object trend) {
+	public void setTrend(Trend trend) {
 		this.trend = trend;
 	}
 }
