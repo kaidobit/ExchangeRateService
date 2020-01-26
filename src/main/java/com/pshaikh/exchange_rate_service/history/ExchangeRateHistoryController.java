@@ -31,8 +31,8 @@ public class ExchangeRateHistoryController {
 		
 	}
 
-	public float getAverageExchangeRateOfLastDays(int days, String baseCurrency, String targetCurrency) {
-		Date today = new Date();
+	public float getAverageExchangeRateOfLastDays(Date date, int days, String baseCurrency, String targetCurrency) {
+		Date today = date;
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);
 		cal.add(Calendar.DATE, -days);
