@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import external_api.ExchangeRateApi;
+import com.pshaikh.exchange_rate_service.external_api.ExchangeRateApi;
 
 /**
  * Businesslogic for ExchangeRate.
