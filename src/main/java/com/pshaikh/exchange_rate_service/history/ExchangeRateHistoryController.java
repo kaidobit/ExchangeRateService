@@ -15,6 +15,8 @@ import com.pshaikh.exchange_rate_service.exchange_rate.ExchangeRateResponse.Tren
 public class ExchangeRateHistoryController {
 	@Autowired
 	ExchangeRateHistoryRepository erhRepo;
+	@Autowired
+	ExchangeRateHistoryService erhService;
 	
 	public boolean persist(List<ExchangeRate> todaysExchangeRates) {
 		boolean persisted = false;
@@ -32,19 +34,22 @@ public class ExchangeRateHistoryController {
 		
 	}
 
-	public float getAverageExchangeRateOfLastDays(Date date, int days, String baseCurrency, String targetCurrency) {
+	public float getAverageExchangeRateOfLastDays(Date date, int days, String baseCurrency, String targetCurrency) {		
+		return erhRepo.calculateAverageRatesByDatesBetweenAndCurrencies(calculateFromDate(date, days), date, baseCurrency, targetCurrency);
+	}
+
+	public Trend getTrend(Date date, int days, String baseCurrency, String targetCurrency) {
+		List<ExchangeRateHistory> exchangeRateHistories = erhRepo.findRatesByDatesBetweenAndCurrencies(calculateFromDate(date, days), date, baseCurrency, targetCurrency);
+		
+		return erhService.determineTrend(exchangeRateHistories);
+	}
+	
+	private Date calculateFromDate(Date date, int days) {
 		Date today = date;
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);
 		cal.add(Calendar.DATE, -days);
-		Date fromDate = cal.getTime();
-		
-		return erhRepo.calculateAverageRatesByDatesBetweenAndCurrencies(fromDate, today, baseCurrency, targetCurrency);
-	}
-
-	public Trend getTrend(Date dateParsed, int i, String baseCurrency, String targetCurrency) {
-		// TODO Auto-generated method stub
-		return null;
+		return cal.getTime();
 	}
 
 
