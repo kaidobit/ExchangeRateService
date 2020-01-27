@@ -77,6 +77,24 @@ public class ExchangeRateHistoryController {
 		return cal.getTime();
 	}
 
+	/**
+	 * find all histories for a date
+	 * @param date
+	 * @return returns found histories 
+	 */
+	public List<ExchangeRateHistory> getRatesForDay(Date date) {
+		return erhRepo.findByDateStartingWith(date);
+	}
+
+	/**
+	 * find all histories for a month
+	 * @param date
+	 * @return returns found histories 
+	 */
+	public List<ExchangeRateHistory> getRatesForMonth(String yearMonth) {
+		return erhRepo.findByMonth("2018-03");
+	}
+
 
 
 }

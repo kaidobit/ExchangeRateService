@@ -40,4 +40,20 @@ public interface ExchangeRateHistoryRepository extends CrudRepository<ExchangeRa
 	List<ExchangeRateHistory> findRatesByDatesBetweenAndCurrencies(@Param("fromDate") Date fromDate, @Param("toDate") Date toDate,
 			@Param("baseCurrency") String baseCurrency, @Param("targetCurrency") String targetCurrency);
 
+	/**
+	 * select all histories between two dates
+	 * @param date
+	 * @return a list of found histories
+	 */
+	@Query("SELECT erh FROM ExchangeRateHistory erh WHERE erh.date BETWEEN :date AND :date")
+	List<ExchangeRateHistory> findByDateStartingWith(Date date);
+
+	/**
+	 * select all histories for a month
+	 * @param date
+	 * @return a list of found histories
+	 */
+	@Query("SELECT erh FROM ExchangeRateHistory erh WHERE erh.date LIKE ':yearMonth%'")
+	List<ExchangeRateHistory> findByMonth(@Param("yearMonth") String yearMonth);
+
 }
